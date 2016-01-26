@@ -1,25 +1,43 @@
 BufferedReader reader;
 String line;
+ArrayList words = new ArrayList();
+static String fuckedup;
 
 void setup() 
 {
+  size(500, 500);
 
-//load in file 
+  //load in file 
   reader = createReader("123.txt");
 
-  println(reader);
+  //println(reader);
 
-//store into String
+  //store into String
   try 
   {
-    
-      //while ((line = reader.readLine()) != null) {
-      //  //reader.append(  );
-      //}
-    
-   line = reader.readLine();
-    
-      println(line);
+    //line = reader.readLine();
+    //println(line);
+    while (true) 
+    {
+      int c = reader.read();
+      if (c == -1) break;
+      Character letter = (char)c; 
+      Character LowLetter = letter.toLowerCase(letter);
+      //print(letter);
+
+      //Boolean IsLowLetter = LowLetter.isLowerCase(letter); 
+      String LowLetterTemp = LowLetter.toString();
+      String CleanLowLetterTemp = LowLetterTemp.replaceAll("[\\W]", "");
+
+      String fuckedupT = CleanLowLetterTemp;
+      fuckedup = fuckedup + fuckedupT;
+      //println(fuckedup, "!!!");
+
+      //Println(LowLetter.isLowerCase(letter));
+      //print(LowLetter);
+      //print(LowLetterTemp);
+      //print(CleanLowLetterTemp);
+    }
   } 
   catch (IOException e) 
   {
@@ -27,27 +45,59 @@ void setup()
     line = null;
   }
 
+  //split 
+  //for (String fucker : line.split(" "))
+  //{
+  //  println(fucker);
+  //  words.add(fucker);
+  //}
 
-//split 
-  for (String fucker: line.split(" "))
-  {
-    println(fucker);
+  println(fuckedup, "!!!");
+//count letter frequency
+  HashMap<Character, Integer> FrequencyMap = new HashMap<Character, Integer>();          
+  String s = fuckedup;
+  for (int i = 0; i < s.length(); i++) {
+    char cTemp = s.charAt(i);
+    Integer val = FrequencyMap.get(new Character(cTemp));
+    if (val != null) {
+      FrequencyMap.put(cTemp, new Integer(val + 1));
+    } else {
+      FrequencyMap.put(cTemp, 1);
+    }
   }
-  
-//arrayList
-  if (line == null)
+  print(FrequencyMap);
+} //end setup
+
+
+
+
+
+void thisCrap() {
+
+
+  //frequcey array
+  char FrequencyArray[];
+  FrequencyArray = new char[25];
+  for (int i = 0; i <= 25; i++);
   {
-    // Stop reading because of an error or file is empty
-    noLoop();
-  } else
-  {
-    ArrayList words = new ArrayList();
-    println("The words arraylis size is: ", words.size());
-    words.add(line);
-    println(words);
-   
+    int j = 0;
+    FrequencyArray[j] = 0; 
+    j++;
   }
-  
-  
-  
+
+  //color array
+  char ColorArray[];
+  ColorArray = new char[25];
+  for (int i = 0; i <= 25; i++);
+  {
+    int j = 0;
+    ColorArray[j] = 0; 
+    j++;
+  }
 }
+
+
+void draw()
+{
+  background(255);
+} //end draw
