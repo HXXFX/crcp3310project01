@@ -1,71 +1,55 @@
+// YOUR NAME
+
 BufferedReader reader;
 String line;
 ArrayList words = new ArrayList();
 static String fuckedup;
+float LetterColor;
 
-void setup() 
-{
+HashMap<Character, Integer> frequencies = new HashMap<Character, Integer>();
+
+
+
+void setup() {
   size(500, 500);
-
-  //load in file 
   reader = createReader("123.txt");
-
-  //println(reader);
-
-  //store into String
-  try 
-  {
-    //line = reader.readLine();
-    //println(line);
-    while (true) 
-    {
-      int c = reader.read();
-      if (c == -1) break;
-      Character letter = (char)c; 
-      Character LowLetter = letter.toLowerCase(letter);
-      //print(letter);
-
-      //Boolean IsLowLetter = LowLetter.isLowerCase(letter); 
-      String LowLetterTemp = LowLetter.toString();
-      String CleanLowLetterTemp = LowLetterTemp.replaceAll("[\\W]", "");
-
-      String fuckedupT = CleanLowLetterTemp;
-      fuckedup = fuckedup + fuckedupT;
-      //println(fuckedup, "!!!");
-
-      //Println(LowLetter.isLowerCase(letter));
-      //print(LowLetter);
-      //print(LowLetterTemp);
-      //print(CleanLowLetterTemp);
+  while (true) {
+    int c = -1;
+    try {
+      c = reader.read();
+    } 
+    catch (IOException e) {
+      e.printStackTrace();
+      println("Could not read from file. Oh no!");
     }
-  } 
-  catch (IOException e) 
-  {
-    e.printStackTrace();
-    line = null;
+    if (c == -1) break;
+    if (!Character.isAlphabetic(c)) continue;
+    Character letter = Character.toLowerCase((char)c);
+    if (frequencies.containsKey(letter)) {
+      frequencies.put(letter, frequencies.get(letter) + 1);
+    } else {
+      frequencies.put(letter, 1);
+    }
   }
 
-  //split 
-  //for (String fucker : line.split(" "))
+  print(frequencies);
+  
+  println("  !!!", frequencies.get(10));
+
+  //int j = 0;
+  //float ColorArray[];
+  //ColorArray = new float[25];
+  //for (int i = 0; i <= 25; i++);
   //{
-  //  println(fucker);
-  //  words.add(fucker);
+
+  //  //float LetterColor = random(30, 150);
+
+
+  //  ColorArray[j] = LetterColor + j; 
+  //  j++;
   //}
 
-  println(fuckedup, "!!!");
-//count letter frequency
-  HashMap<Character, Integer> FrequencyMap = new HashMap<Character, Integer>();          
-  String s = fuckedup;
-  for (int i = 0; i < s.length(); i++) {
-    char cTemp = s.charAt(i);
-    Integer val = FrequencyMap.get(new Character(cTemp));
-    if (val != null) {
-      FrequencyMap.put(cTemp, new Integer(val + 1));
-    } else {
-      FrequencyMap.put(cTemp, 1);
-    }
-  }
-  print(FrequencyMap);
+  float ColorArray[] = {10.0, 15.0, 20.0, 25, 30.0, 35.0, 40.0, 45.0, 50.0, 55.0, 60.0, 65.0, 70.0, 10.0, 15.0, 20.0, 25, 30.0, 35.0, 40.0, 45.0, 50.0, 55.0, 60.0, 65.0, 70.0};
 } //end setup
 
 
@@ -86,14 +70,14 @@ void thisCrap() {
   }
 
   //color array
-  char ColorArray[];
-  ColorArray = new char[25];
-  for (int i = 0; i <= 25; i++);
-  {
-    int j = 0;
-    ColorArray[j] = 0; 
-    j++;
-  }
+  //char ColorArray[];
+  //ColorArray = new char[25];
+  //for (int i = 0; i <= 25; i++);
+  //{
+  //  int j = 0;
+  //  ColorArray[j] = 0; 
+  //  j++;
+  //}
 }
 
 
