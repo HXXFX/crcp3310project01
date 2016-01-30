@@ -14,6 +14,9 @@ final String FILENAME = "AliceninWonderland.txt";
 final int DRAW_LETTER_STATE =0;
 final int DRAW_FREQUENCIES_STATE = 1;
 
+ArrayList<Integer> allicePositonArrayList = new ArrayList<Integer>();
+
+int aliceCounter = 0;
 
 void setup() {
   size(500, 500);
@@ -27,7 +30,6 @@ void setup() {
   prepareFrequencies();
   generateFrequenciesAndVisualization();
   determineMinAndMax();
-  //highlightAlice();
 
   letterViz.updatePixels();
 } //end setup
